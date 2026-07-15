@@ -1,0 +1,156 @@
+/*
+ * Miryoku keymap for the PandaKB Corne.
+ *
+ * The board has six columns per half, while Miryoku uses five. The outer
+ * column on each half is intentionally unused (&none). Layer numbers are
+ * positional, so keep the layer order below in sync with the &lt bindings.
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/rgb.h>
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+        /* 0: QWERTY base with Miryoku home-row modifiers. */
+        base_layer {
+            display-name = "BASE";
+            bindings = <
+                &none &kp Q &kp W &kp E &kp R &kp T
+                         &kp Y &kp U &kp I &kp O &kp P &none
+
+                &none &mt LGUI A &mt LALT S &mt LCTRL D &mt LSHFT F &kp G
+                         &kp H &mt RSHFT J &mt RCTRL K &mt RALT L &mt RGUI SEMI &none
+
+                &none &lt 3 Z &kp X &kp C &kp V &kp B
+                         &kp N &kp M &kp COMMA &kp DOT &lt 3 FSLH &none
+
+                &lt 4 ESC &lt 1 SPACE &lt 2 TAB
+                         &lt 6 RET &lt 5 BSPC &lt 7 DEL
+            >;
+        };
+
+        /* 1: navigation and editing on the right hand. */
+        nav_layer {
+            display-name = "NAV";
+            bindings = <
+                &trans &trans &trans &trans &trans &trans
+                         &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &kp K_UNDO &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp CAPSLOCK &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &kp INSERT &kp HOME &kp PG_DN &kp PG_UP &kp END &trans
+
+                &trans &trans &trans &trans &trans &trans
+            >;
+        };
+
+        /* 2: mouse movement and buttons. */
+        mouse_layer {
+            display-name = "MOUSE";
+            bindings = <
+                &trans &trans &trans &trans &trans &trans
+                         &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &kp K_UNDO &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT &trans &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &trans &trans
+
+                &trans &trans &trans &mkp LCLK &mkp RCLK &mkp MCLK
+            >;
+        };
+
+        /* 3: mouse buttons, clipboard, and modifiers. */
+        button_layer {
+            display-name = "BUTTON";
+            bindings = <
+                &trans &kp K_UNDO &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_REDO
+                         &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &kp K_UNDO &trans
+
+                &trans &kp LGUI &kp LALT &kp LCTRL &kp LSHFT &trans
+                         &trans &kp RSHFT &kp RCTRL &kp RALT &kp RGUI &trans
+
+                &trans &kp K_CUT &kp K_COPY &kp K_PASTE &kp K_REDO &trans
+                         &trans &kp K_REDO &kp K_PASTE &kp K_COPY &kp K_CUT &trans
+
+                &trans &trans &trans &mkp LCLK &mkp RCLK &mkp MCLK
+            >;
+        };
+
+        /* 4: media, Bluetooth, and underglow controls on the right. */
+        media_layer {
+            display-name = "MEDIA";
+            bindings = <
+                &trans &trans &trans &trans &trans &trans
+                         &kp C_PREV &kp C_PP &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &kp C_MUTE &trans &trans &trans &trans &trans
+
+                &trans &trans &trans &trans &trans &trans
+                         &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+
+                &trans &trans &trans &trans &kp C_MUTE &trans
+            >;
+        };
+
+        /* 5: numbers and keypad-style symbols on the left. */
+        num_layer {
+            display-name = "NUM";
+            bindings = <
+                &trans &kp LBKT &kp N7 &kp N8 &kp N9 &kp RBKT
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp SEMI &kp N4 &kp N5 &kp N6 &kp EQUAL
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp GRAVE &kp N1 &kp N2 &kp N3 &kp BSLH
+                         &trans &trans &trans &trans &trans &trans
+
+                &kp DOT &kp N0 &kp MINUS &trans &trans &trans
+            >;
+        };
+
+        /* 6: shifted symbols on the left. */
+        sym_layer {
+            display-name = "SYM";
+            bindings = <
+                &trans &kp LBRC &kp AMPS &kp KP_MULTIPLY &kp LPAR &kp RBRC
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp COLON &kp DLLR &kp PRCNT &kp CARET &kp PLUS
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp GRAVE &kp EXCL &kp AT &kp HASH &kp PIPE
+                         &trans &trans &trans &trans &trans &trans
+
+                &kp LPAR &kp RPAR &kp MINUS &trans &trans &trans
+            >;
+        };
+
+        /* 7: function and system keys on the left. */
+        fun_layer {
+            display-name = "FUN";
+            bindings = <
+                &trans &kp F9 &kp F10 &kp F11 &kp F12 &kp PSCRN
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp F5 &kp F6 &kp F7 &kp F8 &kp SLCK
+                         &trans &trans &trans &trans &trans &trans
+
+                &trans &kp F1 &kp F2 &kp F3 &kp F4 &kp PAUSE_BREAK
+                         &trans &trans &trans &trans &trans &trans
+
+                &kp SPACE &kp TAB &kp K_APP &trans &trans &trans
+            >;
+        };
+    };
+};
