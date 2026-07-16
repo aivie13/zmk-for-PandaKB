@@ -42,7 +42,7 @@
                          &kp LG(LS(Z)) &kp LG(V) &kp LG(C) &kp LG(X) &kp LG(Z) &trans
 
                 &trans &trans &trans &trans &trans &trans
-                         &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp CAPSLOCK &trans
+                         &kp CAPSLOCK &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
 
                 &trans &trans &trans &trans &trans &trans
                          &kp INSERT &kp HOME &kp PG_DN &kp PG_UP &kp END &trans
