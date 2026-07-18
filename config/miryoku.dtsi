@@ -176,7 +176,7 @@
         fun_layer {
             display-name = "FUN";
             bindings = <
-                &trans &kp F9 &kp F10 &kp F11 &kp F12 &kp PSCRN
+                &ext_power EP_OFF &kp F9 &kp F10 &kp F11 &kp F12 &kp PSCRN
                          &trans &trans &trans &trans &trans &trans
 
                 &trans &kp F5 &kp F6 &kp F7 &kp F8 &kp SLCK
